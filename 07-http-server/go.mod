@@ -23,4 +23,4 @@ require (
 	golang.org/x/sys v0.11.0 // indirect
 )
 
-replace github.com/extism/extism => ../../go-sdk
+replace github.com/extism/extism => ../go-sdk

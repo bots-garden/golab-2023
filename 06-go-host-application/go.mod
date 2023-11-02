@@ -9,4 +9,4 @@ require (
 
 require github.com/gobwas/glob v0.2.3 // indirect
 
-replace github.com/extism/extism => ../../go-sdk
+replace github.com/extism/extism => ../go-sdk
