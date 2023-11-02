@@ -8,6 +8,5 @@ package main
 
 // 10- hello function
 
-
 func main () {}
 
