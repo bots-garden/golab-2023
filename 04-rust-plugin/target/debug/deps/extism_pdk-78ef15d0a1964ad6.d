@@ -1,0 +1,13 @@
+/workspace/golab-2023/04-rust-plugin/target/debug/deps/extism_pdk-78ef15d0a1964ad6.rmeta: /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/lib.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/macros.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/bindings.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/config.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/from_bytes.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/memory.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/to_memory.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/var.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/http.rs
+
+/workspace/golab-2023/04-rust-plugin/target/debug/deps/extism_pdk-78ef15d0a1964ad6.d: /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/lib.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/macros.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/bindings.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/config.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/from_bytes.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/memory.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/to_memory.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/var.rs /workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/http.rs
+
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/lib.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/macros.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/bindings.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/config.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/from_bytes.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/memory.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/to_memory.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/var.rs:
+/workspace/.cargo/registry/src/index.crates.io-6f17d22bba15001f/extism-pdk-0.3.3/src/http.rs:
