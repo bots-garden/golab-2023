@@ -1,0 +1,53 @@
+{
+  "create output": {
+    "body": [
+      "output := \"🎉 Extism is 💜, 🌍: \" + url",
+      "",
+      "// return the value",
+      "// copy output to host memory",
+      "mem := pdk.AllocateString(output)",
+      "pdk.OutputMemory(mem)",
+      ""
+    ],
+    "description": "create output (return value)",
+    "prefix": "go-04-output",
+    "scope": "go"
+  },
+  "make http request": {
+    "body": [
+      "req := pdk.NewHTTPRequest(\"GET\", url)",
+      "res := req.Send()",
+      "",
+      "pdk.Log(pdk.LogInfo, \"📝:\"+string(res.Body()))",
+      ""
+    ],
+    "description": "make http request",
+    "prefix": "go-03-http-request",
+    "scope": "go"
+  },
+  "read config string": {
+    "body": [
+      "// {\"url\":\"https://jsonplaceholder.typicode.com/todos/1\"}",
+      "url, _ := pdk.GetConfig(\"url\")",
+      "// display input",
+      "pdk.Log(pdk.LogInfo, \"🌍\" + url)",
+      ""
+    ],
+    "description": "read config string",
+    "prefix": "go-02-config",
+    "scope": "go"
+  },
+  "read input string": {
+    "body": [
+      "// read the function argument from the memory",
+      "input := pdk.Input()",
+      "",
+      "// display input",
+      "pdk.Log(pdk.LogInfo, string(input))",
+      ""
+    ],
+    "description": "read input string",
+    "prefix": "go-01-input",
+    "scope": "go"
+  }
+}

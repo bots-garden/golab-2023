@@ -1,0 +1,22 @@
+snippet add:
+  prefix: "vanilla-add"
+  name: "add"
+  description: "func add(x int, y int) int"
+  scope: "go"
+  body: |
+    // ✋ make this function callable from host
+    //export add
+    func add(x int, y int) int {
+      return x + y
+    }
+
+snippet hello:
+  prefix: "vanilla-hello"
+  name: "hello"
+  description: "func hello(name string) string"
+  scope: "go"
+  body: |
+    //export hello
+    func hello(name string) string {
+      return "hello " + name
+    }

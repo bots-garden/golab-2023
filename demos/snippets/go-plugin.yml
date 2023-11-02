@@ -1,0 +1,50 @@
+
+
+
+snippet read input:
+  prefix: "go-01-input"
+  name: "read input string"
+  description: "read input string"
+  scope: "go"
+  body: |
+    // read the function argument from the memory
+    input := pdk.Input()
+
+    // display input
+    pdk.Log(pdk.LogInfo, string(input))
+
+
+snippet read config:
+  prefix: "go-02-config"
+  name: "read config string"
+  description: "read config string"
+  scope: "go"
+  body: |
+    // {"url":"https://jsonplaceholder.typicode.com/todos/1"}
+    url, _ := pdk.GetConfig("url")
+    // display input
+    pdk.Log(pdk.LogInfo, "🌍" + url)
+
+snippet http request:
+  prefix: "go-03-http-request"
+  name: "make http request"
+  description: "make http request"
+  scope: "go"
+  body: |
+    req := pdk.NewHTTPRequest("GET", url)
+    res := req.Send()
+
+    pdk.Log(pdk.LogInfo, "📝:"+string(res.Body()))
+
+snippet create output:
+  prefix: "go-04-output"
+  name: "create output"
+  description: "create output (return value)"
+  scope: "go"
+  body: |
+    output := "🎉 Extism is 💜, 🌍: " + url
+
+    // return the value
+    // copy output to host memory
+    mem := pdk.AllocateString(output)
+    pdk.OutputMemory(mem)

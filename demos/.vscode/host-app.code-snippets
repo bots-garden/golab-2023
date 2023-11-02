@@ -1,0 +1,63 @@
+{
+  "call plugin function": {
+    "body": [
+      "_, result, err := wasmPlugin.Call(",
+      "  functionName,",
+      "  []byte(input),",
+      ")",
+      "",
+      "if err != nil {",
+      "  fmt.Println(\"😡\", err)",
+      "  os.Exit(1)",
+      "} else {",
+      "  fmt.Println(\"🙂\", string(result))",
+      "  os.Exit(0)",
+      "}",
+      ""
+    ],
+    "description": "call plugin function",
+    "prefix": "host-04-call-plugin-function",
+    "scope": "go"
+  },
+  "host plugin config": {
+    "body": [
+      "levelInfo := extism.Info",
+      "",
+      "pluginConfig := extism.PluginConfig{",
+      "  ModuleConfig: wazero.NewModuleConfig().WithSysWalltime(),",
+      "  EnableWasi:   true,",
+      "  LogLevel:     \u0026levelInfo,",
+      "}",
+      ""
+    ],
+    "description": "create host plugin config",
+    "prefix": "host-01-plugin-config",
+    "scope": "go"
+  },
+  "host plugin manifest": {
+    "body": [
+      "pluginManifest := extism.Manifest{",
+      "  Wasm: []extism.Wasm{",
+      "    extism.WasmFile{Path: wasmFilePath},",
+      "  },",
+      "}",
+      ""
+    ],
+    "description": "create host plugin manifest",
+    "prefix": "host-02-plugin-manifest",
+    "scope": "go"
+  },
+  "plugin instance": {
+    "body": [
+      "wasmPlugin, err := extism.NewPlugin(ctx, pluginManifest, pluginConfig, nil)",
+      "",
+      "if err != nil {",
+      "  panic(err)",
+      "}",
+      ""
+    ],
+    "description": "create a plugin instance",
+    "prefix": "host-03-plugin-instance",
+    "scope": "go"
+  }
+}

@@ -1,0 +1,15 @@
+[package]
+name = "rust-plugin"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate_type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+extism-pdk = "0.3.3"
+serde = "1.0.171"
+serde_json = "1.0.103"
+

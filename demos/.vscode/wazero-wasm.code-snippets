@@ -1,0 +1,178 @@
+{
+  "call hello function": {
+    "body": [
+      "// Call \"hello\" with the position and the size of \"Bob Morane\"",
+      "// The result type is []uint64",
+      "result, err := helloFunction.Call(ctx, namePosition, nameSize)",
+      "if err != nil {",
+      "  log.Panicln(err)",
+      "}",
+      "",
+      "// Extract the position and size of from result",
+      "valuePosition := uint32(result[0] \u003e\u003e 32)",
+      "valueSize := uint32(result[0])",
+      ""
+    ],
+    "description": "Call hello(pos, size)",
+    "prefix": "wz-06-call-hello-function",
+    "scope": "go"
+  },
+  "copy buffer": {
+    "body": [
+      "func copyBufferToMemory(buffer []byte) uint64 {",
+      "  bufferPtr := \u0026buffer[0]",
+      "  unsafePtr := uintptr(unsafe.Pointer(bufferPtr))",
+      "",
+      "  pos := uint32(unsafePtr)",
+      "  size := uint32(len(buffer))",
+      "",
+      "  return (uint64(pos) \u003c\u003c uint64(32)) | uint64(size)",
+      "}",
+      ""
+    ],
+    "description": "Copy a buffer to memory",
+    "prefix": "wz-09-copy-buffer-to-memory",
+    "scope": "go"
+  },
+  "display hello result": {
+    "body": [
+      "bytes, ok := module.Memory().Read(valuePosition, valueSize) ",
+      "",
+      "if !ok {",
+      "  log.Panicf(\"😡 Out of range of memory size\")",
+      "} else {",
+      "  fmt.Println(\"😃 Returned value :\", string(bytes))",
+      "}",
+      ""
+    ],
+    "description": "Read the value from the memory",
+    "prefix": "wz-07-read-value-from-memory",
+    "scope": "go"
+  },
+  "function parameters": {
+    "body": [
+      "// Function argument",
+      "name := \"Bob Morane\"",
+      "nameSize := uint64(len(name))",
+      "",
+      "// Allocate Memory for \"Bob Morane\"",
+      "results, err := malloc.Call(ctx, nameSize)",
+      "if err != nil {",
+      "  log.Panicln(err)",
+      "}",
+      "namePosition := results[0]",
+      "",
+      "// Free the pointer when finished",
+      "defer free.Call(ctx, namePosition)",
+      "",
+      "// Copy \"Bob Morane\" to memory",
+      "success := module.Memory().Write(uint32(namePosition), []byte(name))",
+      "if !success {",
+      "  log.Panicf(\"out of range of memory size\")",
+      "}",
+      ""
+    ],
+    "description": "Passing parameters to the Wasm function",
+    "prefix": "wz-05-passing-paramaters",
+    "scope": "go"
+  },
+  "hello function": {
+    "body": [
+      "//export hello",
+      "func hello(valuePosition *uint32, length uint32) uint64 {",
+      "  ",
+      "  // read the memory to get the argument(s)",
+      "  valueBytes := readBufferFromMemory(valuePosition, length)",
+      "",
+      "  message := \"👋 Hello \" + string(valueBytes) + \" 😃\"",
+      "",
+      "  fmt.Println(\"🧾:\" + message)",
+      "",
+      "  // copy the value to memory",
+      "  // get the position and the size of the buffer (in memory)",
+      "  posSize := copyBufferToMemory([]byte(message))",
+      "",
+      "  // return the position and size",
+      "  return posSize",
+      "",
+      "}",
+      ""
+    ],
+    "description": "Define the hello function",
+    "prefix": "wz-10-hello-function",
+    "scope": "go"
+  },
+  "read buffer": {
+    "body": [
+      "func readBufferFromMemory(bufferPosition *uint32, length uint32) []byte {",
+      "  subjectBuffer := make([]byte, length)",
+      "  pointer := uintptr(unsafe.Pointer(bufferPosition))",
+      "  for i := 0; i \u003c int(length); i++ {",
+      "    s := *(*int32)(unsafe.Pointer(pointer + uintptr(i)))",
+      "    subjectBuffer[i] = byte(s)",
+      "  }",
+      "  return subjectBuffer",
+      "}",
+      ""
+    ],
+    "description": "Read a buffer from the shared memory",
+    "prefix": "wz-08-read-buffer-from-memory",
+    "scope": "go"
+  },
+  "wasm file": {
+    "body": [
+      "wasmPath := \"../function/demo.wasm\"",
+      "wasmDemo, err := os.ReadFile(wasmPath)",
+      "",
+      "if err != nil {",
+      "  log.Panicln(err)",
+      "}",
+      ""
+    ],
+    "description": "Load the WebAssembly module",
+    "prefix": "wz-02-load-wasm-file",
+    "scope": "go"
+  },
+  "wasm function": {
+    "body": [
+      "helloFunction := module.ExportedFunction(\"hello\")",
+      ""
+    ],
+    "description": "Get the reference to the Wasm function: hello",
+    "prefix": "wz-04-get-ref-wasm-func",
+    "scope": "go"
+  },
+  "wasm plugin": {
+    "body": [
+      "module, err := runtime.Instantiate(ctx, wasmDemo)",
+      "if err != nil {",
+      "  log.Panicln(err)",
+      "}",
+      "// These function are exported by TinyGo",
+      "malloc := module.ExportedFunction(\"malloc\")",
+      "free := module.ExportedFunction(\"free\")",
+      ""
+    ],
+    "description": "Instantiate the Wasm plugin",
+    "prefix": "wz-03-instantiate-wasm-plugin",
+    "scope": "go"
+  },
+  "wazero runtime": {
+    "body": [
+      "ctx := context.Background()",
+      "",
+      "// Create a new runtime.",
+      "runtime := wazero.NewRuntime(ctx)",
+      "",
+      "// This closes everything this Runtime created.",
+      "defer runtime.Close(ctx)",
+      "",
+      "// Instantiate WASI",
+      "wasi_snapshot_preview1.MustInstantiate(ctx, runtime)",
+      ""
+    ],
+    "description": "Create a new WebAssembly Runtime",
+    "prefix": "wz-01-create-runtime",
+    "scope": "go"
+  }
+}

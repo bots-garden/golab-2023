@@ -1,0 +1,6 @@
+*.wasm
+node_modules
+go-sdk
+.DS_Store
+
+

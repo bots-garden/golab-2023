@@ -1,0 +1,13 @@
+go 1.21.1
+
+use (
+	./01-first-wasm-program
+	./02-wazero/cli
+	./02-wazero/function
+	./03-go-plugin
+	./06-go-host-application
+	./07-http-server
+
+)
+
+// go work sync

@@ -1,0 +1,27 @@
+{
+  "add": {
+    "body": [
+      "// ✋ make this function callable from host",
+      "//export add",
+      "func add(x int, y int) int {",
+      "  return x + y",
+      "}",
+      ""
+    ],
+    "description": "func add(x int, y int) int",
+    "prefix": "vanilla-add",
+    "scope": "go"
+  },
+  "hello": {
+    "body": [
+      "//export hello",
+      "func hello(name string) string {",
+      "  return \"hello \" + name",
+      "}",
+      ""
+    ],
+    "description": "func hello(name string) string",
+    "prefix": "vanilla-hello",
+    "scope": "go"
+  }
+}
