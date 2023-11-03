@@ -1,5 +1,7 @@
-image:
-  file: .gitpod.dockerfile
+#image:
+#  file: .gitpod.dockerfile
+
+image: k33g/golab-2023:0.0.0
 
 tasks:
   - name: initialize
