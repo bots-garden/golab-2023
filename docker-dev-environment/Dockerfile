@@ -114,5 +114,21 @@ EOF
 #COPY package.json package.json
 #RUN npm install
 
+RUN <<EOF
+# -----------------------
+# Install Extism JS PDK
+# -----------------------
+export TAG="v0.5.0"
+export ARCH="aarch64"
+#export ARCH="x86_64"
+export  OS="linux"
+curl -L -O "https://github.com/extism/js-pdk/releases/download/$TAG/extism-js-$ARCH-$OS-$TAG.gz"
+gunzip extism-js*.gz
+chmod +x extism-js-*
+mv extism-js-* /usr/local/bin/extism-js
+EOF
+
+
+
 # Command to run when starting the container
 CMD ["/bin/bash"]

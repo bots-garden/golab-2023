@@ -9,7 +9,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/extism/extism"
+	extism "github.com/extism/go-sdk"
 	"github.com/gofiber/fiber/v2"
 	"github.com/tetratelabs/wazero"
 )
@@ -39,9 +39,12 @@ func main() {
 
 	ctx := context.Background()
 
+	level := extism.Warn //
+
 	config := extism.PluginConfig{
 		ModuleConfig: wazero.NewModuleConfig().WithSysWalltime(),
 		EnableWasi:   true,
+		LogLevel:     &level,
 	}
 
 	manifest := extism.Manifest{
@@ -49,17 +52,17 @@ func main() {
 			extism.WasmFile{
 				Path: wasmFilePath},
 		},
-		AllowedHosts:  []string{"*"}, 
+		Config:       map[string]string{},
+		AllowedHosts: []string{"*"},
 	}
 
-	pluginInst, err := extism.NewPlugin(ctx, manifest, config, nil) // new
+	pluginInst, err := extism.NewPlugin(ctx, manifest, config, []extism.HostFunction{}) // new
 	if err != nil {
 		log.Println("🔴 !!! Error when loading the plugin", err)
 		os.Exit(1)
 	}
 
 	StorePlugin(pluginInst)
-
 
 	app := fiber.New(fiber.Config{DisableStartupMessage: true})
 

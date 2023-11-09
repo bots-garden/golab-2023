@@ -3,9 +3,7 @@ module wasm-server
 go 1.21.1
 
 require (
-	github.com/extism/extism v0.4.0
 	github.com/gofiber/fiber/v2 v2.48.0
-	github.com/tetratelabs/wazero v1.3.1
 )
 
 require (
@@ -22,5 +20,3 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/sys v0.11.0 // indirect
 )
-
-replace github.com/extism/extism => ../go-sdk
