@@ -2,5 +2,5 @@
 node_modules
 go-sdk
 .DS_Store
-
-
+target
+wasm-server
